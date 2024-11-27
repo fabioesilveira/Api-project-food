@@ -1,0 +1,22 @@
+.div-categories{
+    display: flex;
+}
+
+.btn-categories{
+    text-decoration: none;
+    color: black;
+    background-color: #ededed;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.div-ingredients{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.card-ingredient{
+    width: 200px;
+    border: 1px solid black;
+}
