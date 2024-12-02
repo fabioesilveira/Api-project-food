@@ -1,0 +1,16 @@
+.nav-header {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    margin-top: 10px;
+    background-color: rgb(192, 192, 192);
+}
+
+.h1-nav-header {
+    font-family: "Edu AU VIC WA NT Arrows", cursive;
+    font-optical-sizing: auto;
+    font-weight: bolder;
+    
+
+}
