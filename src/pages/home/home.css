@@ -42,11 +42,23 @@
     margin-top: 20px;
     justify-content: center;
     gap: 5px;
+    flex-grow: 1; /* Allow content to grow and take available space */
+    overflow-y: auto; /* Enable vertical scrolling */
 }
 
 .card-ingredient{
     width: 200px;
     border: 1px solid black;
 }
+
+.h2-card{
+    text-align: center;
+}
+
+.img-card{
+    margin-left: 50px;
+}
+
+
 
 

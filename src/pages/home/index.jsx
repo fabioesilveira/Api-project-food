@@ -100,8 +100,8 @@ function Home() {
                 <div className="div-ingredients">
                     {ingredients.map((e) => (
                         <div className="card-ingredient" onClick={() => handleClickNavigate(e.strIngredient)}>
-                            <h2>{e.strIngredient}</h2>
-                            <img src={`https://www.themealdb.com/images/ingredients/${e.strIngredient}-Small.png`} />
+                            <h2 className="h2-card">{e.strIngredient}</h2>
+                            <img className="img-card" src={`https://www.themealdb.com/images/ingredients/${e.strIngredient}-Small.png`} />
                         </div>
                     )).slice(0, 30)}
                 </div>

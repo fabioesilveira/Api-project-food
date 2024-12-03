@@ -1,3 +1,25 @@
+.div-footer{
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(192, 192, 192);
+    margin-bottom: 10px;
+    gap: 90px;
+    flex-shrink: 0; /* Prevent shrinking */
+}
+
 .icon{
-    font-size: 30px;
+    font-size: 45px;
+}
+
+.icon-2{
+    font-size: 45px;
+}
+
+.logo-footer{
+    width: 100px;
+    height: 90px;
+    
+    
 }
