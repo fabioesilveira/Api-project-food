@@ -23,5 +23,16 @@
     text-align: center;
   }
 
+  .div-footer{
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(192, 192, 192);
+    margin-top: 260px;
+    gap: 90px;
+    flex-shrink: 0; /* Prevent shrinking */
+  }
+
   
 

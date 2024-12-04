@@ -5,6 +5,7 @@ import Categorie from "./pages/categorie";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Desserts from "./pages/desserts";
 import Meal from "./pages/meal";
+import Recipe from "./pages/recipe";
 
 function App() {
   return(
@@ -14,6 +15,7 @@ function App() {
       <Route path="/categories/:name" element={ <Categorie />} />
       <Route path="/meal/:name"  element={ <Meal />}/>
       <Route path="/desserts" element={<Desserts />} />
+      <Route path="/recipe/:id" element={<Recipe />} />
     </Routes>
   )
 }

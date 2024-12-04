@@ -2,10 +2,18 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-import Footer from '../../components/footer';
+import Logo from '../../assets/logo.png'
 import './loggin.css'
+import { useNavigate } from 'react-router-dom';
 
 function Loggin() {
+    
+    const navigate = useNavigate()
+
+    function handleClick() {
+        navigate("/home")
+    }
+    
     return (
         <div className='my-container-loggin'>
             <h1 className="h1-nav-loggin">FOODS</h1>
@@ -40,13 +48,15 @@ function Loggin() {
 
                     <Form.Group as={Row} className="mb-3">
                         <Col sm={{ span: 10, offset: 2 }}>
-                            <Button type="submit">Sign in</Button>
+                            <Button onClick={handleClick} type="submit">Sign in</Button>
                         </Col>
                     </Form.Group>
                 </Form>
-                <p className='nav-loggin'></p>
+                <div className='div-footer'>
+                    <img src={Logo} className='logo-footer' />
+                </div>
             </main>
-            
+
         </div>
     )
 }
