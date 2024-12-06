@@ -1,5 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import NavHeader from "../../components/navHeader";
+import Footer from "../../components/footer";
+import "./desserts.css"
 
 
 function Desserts() {
@@ -9,7 +12,7 @@ function Desserts() {
     useEffect(() => {
         async function fetchApi() {
             const req = await axios.get("https://www.themealdb.com/api/json/v1/1/filter.php?c=Dessert")
-            const res = req.data.meals
+            const res = req.data.meals.slice(1, 16)
             setDesserts(res)
         }
         fetchApi()
@@ -17,13 +20,24 @@ function Desserts() {
     }, [])
 
     return (
-        <div>
-            {desserts.map((e) => (
-                <div>
-                    <h2>{e.strMeal}</h2>
-                    <img src={e.strMealThumb}/>
-                </div>
-            ))}
+        <div className="my-container">
+
+            <header>
+                <NavHeader />
+            </header>
+            <main>
+                {desserts.map((e) => (
+                    <div>
+                        <h2 className="h2-desserts">{e.strMeal}</h2>
+                        <div className="div-img-desserts">
+                            <img className="img-desserts" src={e.strMealThumb} />
+                        </div>
+
+                    </div>
+                ))}
+
+            </main>
+            <Footer />
         </div>
     )
 }

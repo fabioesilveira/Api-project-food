@@ -35,8 +35,11 @@ function Meal() {
             <main>
                 {meals.map((e) => (
                     <div onClick={() => handleNavigate(e.idMeal)}>
+                       
                         <img className="img-meal" src={e.strMealThumb} />
-                        <h2>{e.strMeal}</h2>
+                        
+
+                        <h2 className="h2-meal">{e.strMeal}</h2>
 
                     </div>
                 ))}

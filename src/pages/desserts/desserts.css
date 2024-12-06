@@ -1,0 +1,16 @@
+.div-img-desserts{
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-desserts{
+    width: 200px;
+}
+
+.h2-desserts{
+    text-align: center;
+    margin-top: 10px;
+}
+
