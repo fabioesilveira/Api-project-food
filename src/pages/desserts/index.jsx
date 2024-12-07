@@ -3,10 +3,12 @@ import { useEffect, useState } from "react";
 import NavHeader from "../../components/navHeader";
 import Footer from "../../components/footer";
 import "./desserts.css"
+import { useNavigate } from "react-router-dom";
 
 
 function Desserts() {
     const [desserts, setDesserts] = useState([])
+    const navigate = useNavigate()
 
 
     useEffect(() => {
@@ -19,6 +21,10 @@ function Desserts() {
 
     }, [])
 
+    function handleNavigate(id) {
+        navigate(`/recipe/${id}`)
+    }
+
     return (
         <div className="my-container">
 
@@ -27,11 +33,13 @@ function Desserts() {
             </header>
             <main>
                 {desserts.map((e) => (
-                    <div>
-                        <h2 className="h2-desserts">{e.strMeal}</h2>
+                    <div onClick={() => handleNavigate(e.idMeal)}>
+                        
                         <div className="div-img-desserts">
                             <img className="img-desserts" src={e.strMealThumb} />
                         </div>
+
+                        <h2 className="h2-desserts">{e.strMeal}</h2>
 
                     </div>
                 ))}

@@ -35,9 +35,9 @@ function Meal() {
             <main>
                 {meals.map((e) => (
                     <div onClick={() => handleNavigate(e.idMeal)}>
-                       
+                       <div className="div-img-meal">
                         <img className="img-meal" src={e.strMealThumb} />
-                        
+                        </div>
 
                         <h2 className="h2-meal">{e.strMeal}</h2>
 

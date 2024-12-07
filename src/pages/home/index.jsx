@@ -43,10 +43,20 @@ function Home() {
         setSelectedOption(value)
     }
 
-    function handleClick(event) {
+    async function handleClick(event) {
         event.preventDefault()
-        console.log(selectedOption)
-        console.log(searchRecipe)
+        if (selectedOption === "name") {
+            const searchName = (`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchRecipe}`)
+            const res = await axios.get(searchName, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json' // Garantir que espera JSON
+                }
+            })
+            setIngredients(res.data.meals)
+        } else {
+            const searchFirstLetter = (`www.themealdb.com/api/json/v1/1/search.php?f=${searchRecipe}`)
+        }
     }
 
     function handleClickNavigate(ingredient) {
@@ -58,7 +68,7 @@ function Home() {
         <div className="my-container">
             <NavHeader />
             <header>
-                
+
                 <form className="form-home">
                     <input className="input-text-home"
                         type="text"
@@ -100,8 +110,11 @@ function Home() {
                 <div className="div-ingredients">
                     {ingredients.map((e) => (
                         <div className="card-ingredient" onClick={() => handleClickNavigate(e.strIngredient)}>
-                            <h2 className="h2-card">{e.strIngredient}</h2>
-                            <img className="img-card" src={`https://www.themealdb.com/images/ingredients/${e.strIngredient}-Small.png`} />
+                            <h2 className="h2-card">{e.strIngredient ? e.strIngredient : e.strMeal}</h2>
+                            <img
+                                className="img-card"
+                                src={e.strMealThumb ? e.strMealThumb : `https://www.themealdb.com/images/ingredients/${e.strIngredient}-Small.png`}
+                                />
                         </div>
                     )).slice(0, 30)}
                 </div>
