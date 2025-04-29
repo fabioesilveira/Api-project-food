@@ -1,15 +1,17 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./recipe.css"
 import NavHeader from "../../components/navHeader";
 import Footer from "../../components/footer";
 import Button from 'react-bootstrap/Button';
+import Context from "../../context/context";
 
 function Recipe() {
 
     const [recipe, setRecipe] = useState([])
     const params = useParams()
+    const {favRecipes, setFavRecipes, recipesDone, setRecipesDone} = useContext(Context)
 
     useEffect(() => {
         async function fetchApi() {
@@ -20,6 +22,14 @@ function Recipe() {
 
         fetchApi()
     }, [])
+
+    function handleClickFav(recipe) {
+        setFavRecipes([...favRecipes, recipe])
+    }
+
+    function handleClickStart(recipe) {
+        setRecipesDone([...recipesDone, recipe])
+    }
 
 
     return (
@@ -36,7 +46,7 @@ function Recipe() {
                         </div>
                         <div className="div-meal-icon">
                             <h2 className="h2-recipe-title">{e.strMeal}</h2>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                            <svg onClick={() => handleClickFav(e)} xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314" />
                             </svg>
                         </div>
@@ -87,7 +97,7 @@ function Recipe() {
 
                         <div className="btn-recipe">
 
-                        <Button variant="secondary" size="lg">
+                        <Button onClick={() => handleClickStart(e)} variant="secondary" size="lg">
                             START RECIPE
                         </Button>
                         </div>

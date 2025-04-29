@@ -25,6 +25,7 @@
 
   .div-footer{
     height: 80px;
+    margin-top: 250px;
     display: flex;
     justify-content: center;
     align-items: center;

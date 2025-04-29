@@ -5,12 +5,21 @@ import Row from 'react-bootstrap/Row';
 import Logo from '../../assets/logo.png'
 import './loggin.css'
 import { useNavigate } from 'react-router-dom';
+import { useContext, useState } from 'react';
+import Context from '../../context/context';
 
 function Loggin() {
     
     const navigate = useNavigate()
+    const {email, setEmail} = useContext(Context)
+    const [ userEmail, setUserEmail] = useState("")
+    
+    function handleChange(event) {
+        setUserEmail(event.target.value)
+    }
 
     function handleClick() {
+        setEmail(userEmail)
         navigate("/home")
     }
     
@@ -27,7 +36,7 @@ function Loggin() {
                             Email
                         </Form.Label>
                         <Col sm={10}>
-                            <Form.Control type="email" placeholder="Email" />
+                            <Form.Control onChange={handleChange} value={userEmail} type="email" placeholder="Email" />
                         </Col>
                     </Form.Group>
 

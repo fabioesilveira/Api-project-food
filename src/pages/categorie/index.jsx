@@ -1,11 +1,15 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
+import NavHeader from "../../components/navHeader";
+import Footer from "../../components/footer";
+import "./categorie.css"
 
-function Categorie() {
+function Categories() {
 
     const params = useParams();
     const [categories, setCategories] = useState([])
+    const navigate = useNavigate()
 
     useEffect(() => {
         async function fetchApi() {
@@ -15,21 +19,35 @@ function Categorie() {
                     'Accept': 'application/json' // Garantir que espera JSON
                 }
             });
-            const data = req.data.meals
+            const data = req.data.meals.slice(1, 12)
             setCategories(data)
         }
         fetchApi()
     }, [])
 
+    function HandleNavigate(id) {
+        navigate (`/recipe/${id}`)
+    }
+
     return (
-        <div>
-            {categories.map((e) => (
-                <div>
-                    <h2>{e.strMeal}</h2>
-                </div>
-            ))}
+        <div className="my-container">
+
+            <header>
+                <NavHeader />
+            </header>
+
+            <main>
+                {categories.map((e) => (
+                    <div onClick={() => HandleNavigate(e.idMeal)}>
+                        <h2>{e.strMeal}</h2>
+                        <img className="img-category" src={e.strMealThumb} />
+                    </div>
+                ))}
+            </main>
+
+            <Footer />
         </div>
     )
 }
 
-export default Categorie;
+export default Categories;

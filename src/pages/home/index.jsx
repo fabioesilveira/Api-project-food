@@ -55,7 +55,14 @@ function Home() {
             })
             setIngredients(res.data.meals)
         } else {
-            const searchFirstLetter = (`www.themealdb.com/api/json/v1/1/search.php?f=${searchRecipe}`)
+            const searchFirstLetter = (`https://www.themealdb.com/api/json/v1/1/search.php?f=${searchRecipe}`)
+            const res = await axios.get(searchFirstLetter, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json' // Garantir que espera JSON
+                }
+            })
+            setIngredients(res.data.meals)
         }
     }
 
@@ -109,7 +116,7 @@ function Home() {
                 </div>
                 <div className="div-ingredients">
                     {ingredients.map((e) => (
-                        <div className="card-ingredient" onClick={() => handleClickNavigate(e.strIngredient)}>
+                        <div className="card-ingredient" onClick={() => handleClickNavigate(e.strIngredient ? e.strIngredient : e.strMeal)}>
                             <h2 className="h2-card">{e.strIngredient ? e.strIngredient : e.strMeal}</h2>
                             <img
                                 className="img-card"
